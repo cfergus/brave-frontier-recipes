@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipes for Brave Frontier</title>
+    <!-- TODO:  <link rel="icon" href="/favicon.png" type="image/png"> -->
+
+    <link rel="stylesheet" href="/css/brave_frontier_recipes.css"
+        media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"
+        media="screen" charset="utf-8">
+
+
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/typeahead.bundle.min.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+  </head>
+  <body>
+
+    <h1>Brave Frontier Recipes</h1>
+
+    <div id="text-header">
+    </div>
+
+    <div id="typeahead-container">
+      <input type="text" id="typeahead-search"
+          placeholder="Sphere or Item Name" class="typeahead">
+    </div>
+
+    <div id="graph-content">
+    </div>
+
+    <div id="item-details" class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <dl id="item-detail-fields">
+            <dt>Description</dt>
+            <dd id="item-field-description">Click on an item above to see its description</dd>
+            <dt>Rarity</dt>
+            <dd id="item-field-rarity"></dd>
+            <dt>Sell Price</dt>
+            <dd id="item-field-sell-price"></dd>
+            <!-- Effect, type, max equipped  -->
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/recipes_typeahead.js"></script>
+    <script src="js/recipes_tree.js"></script>
+    <script src="js/brave_frontier_recipes.js"></script>
+  </body>
+</html>
