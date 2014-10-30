@@ -14,3 +14,5 @@ Clone it from the git repository.
 In your browser, enter the URL:
 
 http://localhost:8000
+
+![A sample screen](img/screen_sample.png)
