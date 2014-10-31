@@ -186,6 +186,8 @@ function update_tree_diagram(source) {
 
 // Show data in another view when a node is clicked
 function node_click(d) {
+  d3.select('#item-field-name')
+    .html( d.name );
   d3.select('#item-field-description')
     .html( d.desc );
   d3.select('#item-field-rarity')
