@@ -139,12 +139,15 @@ function update_tree_diagram(source) {
 
 
   // Declare the links
-  var link = svg.selectAll("path.link")
+  var link = svg.selectAll("g.path")
       .data(links, function(d) { return d.target.id; });
 
   // Enter the links.
-  var link_graphic = link.enter();
-  link_graphic.insert("path", "g")
+  var link_container = link.enter()
+      .insert("g", "g")
+      .attr("class", "path");
+  link_container
+      .insert("path", "g")
       .attr("class", "link")
       .attr("d", function(d) {
           var o = {x: source.x0, y: source.y0};
@@ -152,17 +155,33 @@ function update_tree_diagram(source) {
           });
 
   // Add label for number of items required by recipe
-  // link_label = link_entrance.insert("text", "g")
-  //     .attr("x", function(d) {return (d.source.y + d.target.y) / 2; })
-  //     .attr("y", function(d) {return (d.source.x + d.target.x) / 2; })
-  //     .attr("text-anchor", "middle")
-  //     .attr("opacity", 1e-6 )
-  //     .text(function(d) { return "HAHA"; });
+
+  link_label = link_container.append("text")
+      .attr("class","link-label")
+      .attr("x", function(d) {return d.source.y })
+      .attr("y", function(d) {return d.source.x })
+      .attr("dy", "0.3em")
+      .attr("opacity", 1e-6 )
+      .text(function(d) {
+        // TODO : Can we assign data to links in tree object instead?
+        materials_array = d.source.recipe.materials.filter( function(m) { return m.id === d.target.id } );
+        if( materials_array.length === 1 ) {
+          return materials_array[0].count;
+        }
+      });
+
 
   // Transition links to their new position.
   link.transition()
+      .select("path.link")
       .duration(duration)
       .attr("d", diagonal);
+  link.transition()
+      .select("text.link-label")
+      .duration(duration)
+      .attr("x", function(d) {return (d.source.y + d.target.y) / 2; })
+      .attr("y", function(d) {return (d.source.x + d.target.x) / 2; })
+      .attr("opacity", 1);
 
   // link_label.transition()
   //     .duration(duration)
@@ -170,12 +189,20 @@ function update_tree_diagram(source) {
 
   // Transition exiting nodes to the parent's new position.
   link.exit().transition()
+      .select("path.link")
   	  .duration(duration)
   	  .attr("d", function(d) {
     		var o = {x: source.x, y: source.y};
     		return diagonal({source: o, target: o});
   	  })
   	  .remove();
+  link.exit().transition()
+      .select("text.link-label")
+      .duration(duration)
+      .attr("opacity", 1e-6)
+      .remove();
+  link.exit().transition().remove();
+
 
   // Stash the old positions for transition.
   nodes.forEach(function(d) {

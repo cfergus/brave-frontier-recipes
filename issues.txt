@@ -1,5 +1,5 @@
-Karma image not the same as other images
+* Karma image not the same as other images
 
-Demon bow - large recipe tree - might need drag/zoom to accommodate
+* Demon bow - large recipe tree - might need drag/zoom to accommodate
 
-Uses a items.json from a snapshot in time. Figure out how to get up to date/live version
+* Uses a items.json from a snapshot in time. Figure out how to get up to date/live version
