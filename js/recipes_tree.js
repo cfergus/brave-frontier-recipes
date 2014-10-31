@@ -184,6 +184,7 @@ function update_tree_diagram(source) {
   });
 }
 
+
 // Show data in another view when a node is clicked
 function node_click(d) {
   d3.select('#item-field-name')
@@ -192,9 +193,33 @@ function node_click(d) {
     .html( d.desc );
   d3.select('#item-field-rarity')
     .html( d.rarity );
-  d3.select('#item-field-sell-price')
+
+  // Sell price stuff
+  sell_graphic_width = 10;
+  sell_graphic_height = 50;
+  sell = d3.select('#item-field-sell-price');
+  sell
     .html( d.sell_price );
-  // TODO : Provide context
-  // d3.max( item_data, function(d) { return d.sell_price } )
-  // d3.min( item_data, function(d) { return d.sell_price } )
+  // sell_graphic = sell
+  //   .append('svg')
+  //     .attr("width", sell_graphic_width)
+  //     .attr("height", 50)
+  //   .append('g');
+  //
+  // // TODO : Compute this once during dataset initialization
+  // sell_price_range = [
+  //   d3.min( item_data, function(d) { return d.sell_price } ),
+  //   d3.max( item_data, function(d) { return d.sell_price } )
+  // ]
+  //
+  // sell_graphic.append("rect")
+  //   .attr("height", sell_graphic_height)
+  //   .attr("width", sell_graphic_width)
+  //   .classed("sell-price-max", true);
+  // height = ( d.sell_price / sell_price_range[1] ) * sell_graphic_height;
+  // sell_graphic.append("rect")
+  //   .attr("height", height )
+  //   .attr("width", sell_graphic_width)
+  //   .attr("y", sell_graphic_height - height)
+  //   .classed("sell-price", true);
 }
