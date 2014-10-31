@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Recipes for Brave Frontier</title>
     <!-- TODO:  <link rel="icon" href="/favicon.png" type="image/png"> -->
@@ -17,16 +17,18 @@
   </head>
   <body>
 
-    <h1>Brave Frontier Recipes</h1>
+    <div id="header">
+      <div class="container">
+        <h1>Brave Frontier Recipes</h1>
 
-    <div id="text-header">
+        <div id="typeahead-container">
+          <input type="text" id="typeahead-search"
+              placeholder="Sphere or Item Name" class="typeahead">
+        </div>
+      </div>
     </div>
 
-    <div id="typeahead-container">
-      <input type="text" id="typeahead-search"
-          placeholder="Sphere or Item Name" class="typeahead">
-    </div>
-
+    <!-- SVG Tree gets rendered here -->
     <div id="graph-content">
     </div>
 
