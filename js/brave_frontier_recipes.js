@@ -9,7 +9,7 @@ var tree;
 
 imgprefix="http://3.cdn.bravefrontier.gumi.sg/content/item/";
 
-d3.json('/data/items.json', function( error, raw_item_data_json ) {
+d3.json('./data/items.json', function( error, raw_item_data_json ) {
 
   if(error) return console.warn(error);
 
