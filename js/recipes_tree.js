@@ -94,7 +94,7 @@ function update_tree_diagram(source) {
   nodeEnter.append("image")
       .attr('xlink:href', function(d) {
           if( d.name === 'Karma' ) {
-            return '/img/Karma_drop.gif';
+            return './img/Karma_drop.gif';
           } else {
             return imgprefix + d.thumbnail;
           }
